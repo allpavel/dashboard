@@ -1,6 +1,25 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
+
+import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import {
+    Ecommerce,
+    Orders,
+    Calendar,
+    Employees,
+    Stacked,
+    Pyramid,
+    Customers,
+    Kanban,
+    Area,
+    Bar,
+    Pie,
+    Financial,
+    ColorPicker,
+    ColorMapping,
+    Editor,
+} from "./pages";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -21,39 +40,44 @@ const App: React.FC = () => {
                     </div>
                 </div>
                 {activeMenu ? (
-                    <section className="w-72 fixed dark:bg-secondary-dark-bg bg-white">Sidebar</section>
+                    <section className="w-72 fixed dark:bg-secondary-dark-bg bg-white">
+                        <Sidebar />
+                    </section>
                 ) : (
-                    <section className="w-0 dark:bg-secondary-dark-bg">Sidebar</section>
+                    <section className="w-0 dark:bg-secondary-dark-bg">
+                        <Sidebar />
+                    </section>
                 )}
                 <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? "md:ml-72" : "flex-2"}`}>
-                    <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg">Navbar</div>
+                    <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg">
+                        <Navbar />
+                    </div>
                 </div>
                 <div>
                     <Routes>
                         {/* Dashboard */}
-                        <Route path="/" element="ECommerce" />
-                        <Route path="/ecommerce" element="ECommerce" />
+                        <Route path="/" element={<Ecommerce />} />
+                        <Route path="/ecommerce" element={<Ecommerce />} />
 
                         {/* Pages */}
-                        <Route path="/orders" element="Orders" />
-                        <Route path="/employees" element="Employees" />
-                        <Route path="/customers" element="Customers" />
+                        <Route path="/orders" element={<Orders />} />
+                        <Route path="/employees" element={<Employees />} />
+                        <Route path="/customers" element={<Customers />} />
 
                         {/* Apps */}
-                        <Route path="/kanban" element="Kanban" />
-                        <Route path="/editor" element="Editor" />
-                        <Route path="/calendar" element="Calendar" />
-                        <Route path="/color-picker" element="color-picker" />
+                        <Route path="/kanban" element={<Kanban />} />
+                        <Route path="/editor" element={<Editor />} />
+                        <Route path="/calendar" element={<Calendar />} />
+                        <Route path="/color-picker" element={<ColorPicker />} />
 
                         {/* Charts */}
-                        <Route path="/line" element="Line" />
-                        <Route path="/area" element="Area" />
-                        <Route path="/bar" element="Bar" />
-                        <Route path="/pie" element="Pie" />
-                        <Route path="/financial" element="Financial" />
-                        <Route path="/color-mapping" element="ColorMapping" />
-                        <Route path="/pyramid" element="Pyramid" />
-                        <Route path="/stacked" element="Stacked" />
+                        <Route path="/area" element={<Area />} />
+                        <Route path="/bar" element={<Bar />} />
+                        <Route path="/pie" element={<Pie />} />
+                        <Route path="/financial" element={<Financial />} />
+                        <Route path="/color-mapping" element={<ColorMapping />} />
+                        <Route path="/pyramid" element={<Pyramid />} />
+                        <Route path="/stacked" element={<Stacked />} />
                     </Routes>
                 </div>
             </BrowserRouter>
