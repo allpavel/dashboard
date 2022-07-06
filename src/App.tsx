@@ -19,11 +19,12 @@ import {
     ColorPicker,
     ColorMapping,
     Editor,
+    Line,
 } from "./pages";
 import "./App.css";
 
 const App: React.FC = () => {
-    const activeMenu = false;
+    const activeMenu = true;
     return (
         <div className="flex">
             <BrowserRouter>
@@ -78,6 +79,7 @@ const App: React.FC = () => {
                         <Route path="/color-mapping" element={<ColorMapping />} />
                         <Route path="/pyramid" element={<Pyramid />} />
                         <Route path="/stacked" element={<Stacked />} />
+                        <Route path="/line" element={<Line />} />
                     </Routes>
                 </div>
             </BrowserRouter>
