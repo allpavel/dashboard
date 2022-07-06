@@ -1,7 +1,7 @@
-[data-title]::after {
-  content: attr(data-title);
+/* General styles */
+[data-title]::after,
+[data-closeMenu]::after {
   position: absolute;
-  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
   background-color: #2f312fd8;
@@ -14,22 +14,46 @@
   transition: all .3s linear;
 }
 
-[data-title]::before {
+[data-title]::before,
+[data-closeMenu]::before {
   content: " ";
   position: absolute;
-  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   border-width: 5px;
   border-style: solid;
-  border-top-color: #2f312fd8;
   opacity: 0;
   visibility: hidden;
   transition: all .3s linear;
 }
 
 [data-title]:hover::after, 
-[data-title]:hover::before {
+[data-title]:hover::before,
+[data-closeMenu]:hover::after, 
+[data-closeMenu]:hover::before  {
   opacity: 1;
   visibility: visible;
+}
+
+/* Settings icon styles */
+[data-title]::after {
+  content: attr(data-title);
+  bottom: calc(100% + 10px);
+}
+
+[data-title]::before {
+  bottom: 100%;
+  border-top-color: #2f312fd8;
+}
+
+/* Close Menu icon styles */
+[data-closeMenu]::after {
+  content: attr(data-closeMenu);
+  white-space: nowrap;
+  top: calc(100% + 10px);
+}
+
+[data-closeMenu]::before {
+ top: 100%;
+ border-bottom-color: #2f312fd8;
 }
