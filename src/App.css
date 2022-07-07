@@ -39,6 +39,7 @@
 [data-title]::after {
   content: attr(data-title);
   bottom: calc(100% + 10px);
+  overflow: visible;
 }
 
 [data-title]::before {
@@ -56,4 +57,22 @@
 [data-closeMenu]::before {
  top: 100%;
  border-bottom-color: #2f312fd8;
+}
+
+/* Scrollbar styles */
+.scrollbar {
+  height: calc(90vh - 1rem);
+}
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(104, 103, 103);
+  border-radius: 20px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
 }

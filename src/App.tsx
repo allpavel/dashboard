@@ -41,7 +41,7 @@ const App: React.FC = () => {
                     </div>
                 </div>
                 {activeMenu ? (
-                    <section className="w-72 fixed dark:bg-secondary-dark-bg bg-white">
+                    <section className="w-72 fixed dark:bg-secondary-dark-bg bg-white h-full">
                         <Sidebar />
                     </section>
                 ) : (
