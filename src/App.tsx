@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 
@@ -24,7 +24,6 @@ import {
 import "./App.css";
 
 const App: React.FC = () => {
-    const activeMenu = true;
     return (
         <div className="flex">
             <BrowserRouter>
@@ -40,19 +39,9 @@ const App: React.FC = () => {
                         </button>
                     </div>
                 </div>
-                {activeMenu ? (
-                    <section className="w-72 fixed dark:bg-secondary-dark-bg bg-white h-full">
-                        <Sidebar />
-                    </section>
-                ) : (
-                    <section className="w-0 dark:bg-secondary-dark-bg">
-                        <Sidebar />
-                    </section>
-                )}
-                <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? "md:ml-72" : "flex-2"}`}>
-                    <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg">
-                        <Navbar />
-                    </div>
+                <Sidebar />
+                <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full flex-1 ml-16`}>
+                    <Navbar />
                 </div>
                 <div>
                     <Routes>
