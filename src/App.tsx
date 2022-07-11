@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
-
+import Settings from "./components/Settings";
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
 import {
     Ecommerce,
@@ -25,25 +25,11 @@ import "./App.css";
 
 const App: React.FC = () => {
     return (
-        <div className="flex">
+        <div className="flex h-screen overflow-hidden">
             <BrowserRouter>
-                <div className="flex relative dark:bg-main-dark-bg">
-                    <div className="fixed right-9 bottom-4" style={{ zIndex: "1000" }}>
-                        <button
-                            type="button"
-                            className="relative text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white"
-                            style={{ background: "blue", borderRadius: "50%" }}
-                            data-title="Settings"
-                        >
-                            <FiSettings />
-                        </button>
-                    </div>
-                </div>
                 <Sidebar />
-                <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full flex-1 ml-16`}>
+                <div className="w-full ml-20">
                     <Navbar />
-                </div>
-                <div>
                     <Routes>
                         {/* Dashboard */}
                         <Route path="/" element={<Ecommerce />} />
@@ -72,6 +58,7 @@ const App: React.FC = () => {
                     </Routes>
                 </div>
             </BrowserRouter>
+            <Settings />
         </div>
     );
 };

@@ -5,24 +5,27 @@ import { MdOutlineCancel, MdOutlineMenu } from "react-icons/md";
 import { links } from "../data/dummy";
 import "../App.css";
 
+const activeLink = "flex items-center ml-6 my-3 p-2 font-bold hover:bg-light-gray last:mb-0";
+
+const normalLink =
+    "flex items-center ml-6 my-3 p-2 dark:text-gray-700 dark:hover:text-black hover:bg-light-gray last:mb-0";
+
 const Sidebar: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(true);
-    const isActive = false;
+    const [isOpen, setIsOpen] = useState(false);
 
-    const activeLink = "flex items-center ml-6 my-3 p-2 font-bold hover:bg-light-gray last:mb-0";
-
-    const normalLink =
-        "flex items-center ml-6 my-3 p-2 dark:text-gray-700 dark:hover:text-black hover:bg-light-gray last:mb-0";
+    const handleCloseMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     return (
         <div
-            className={`absolute flex flex-col w-72 h-screen pl-4 transition-all duration-300 ${
+            className={`absolute bg-white z-10 flex flex-col w-72 h-screen pl-4 transition-all duration-300 ${
                 isOpen ? "" : "transform: -translate-x-3/4 w-18"
             }`}
         >
             <section
-                className={`py-4 flex justify-between text-xl dark:text-white text-slate-900 bg-white ${
-                    isOpen ? "pr-4" : "pr-6 mr-2"
+                className={`py-4 flex justify-between text-xl dark:text-white text-slate-900 ${
+                    isOpen ? "pr-4" : "pr-4 mr-2"
                 }`}
             >
                 <Link
@@ -35,22 +38,18 @@ const Sidebar: React.FC = () => {
                     <SiTrustedshops className="mr-2" /> <span>Overtea</span>
                 </Link>
                 {isOpen ? (
-                    <div
-                        className="relative cursor-pointer"
-                        data-closeMenu="Close Menu"
-                        onClick={() => setIsOpen(false)}
-                    >
+                    <div className="relative cursor-pointer" data-closemenu="Close Menu" onClick={handleCloseMenu}>
                         <MdOutlineCancel />
                     </div>
                 ) : (
-                    <div className="relative cursor-pointer" data-openMenu="Open Menu" onClick={() => setIsOpen(true)}>
+                    <div className="relative cursor-pointer" data-openmenu="Open Menu" onClick={handleCloseMenu}>
                         <MdOutlineMenu />
                     </div>
                 )}
             </section>
             <section
                 className={`mt-4 flex flex-col flex-shrink flex-grow-0 scrollbar opacity-100 visible transition-all duration-400 ${
-                    isOpen ? "overflow-y-auto" : "invisible opacity-0"
+                    isOpen ? "overflow-y-auto" : "invisible opacity-0 overflow-y-auto"
                 }`}
             >
                 {links.map((link) => (
@@ -60,7 +59,8 @@ const Sidebar: React.FC = () => {
                             <NavLink
                                 to={`/${link.name}`}
                                 key={link.name}
-                                className={`${isActive ? activeLink : normalLink}`}
+                                className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                                onClick={handleCloseMenu}
                             >
                                 {link.icon} <span className="ml-2 capitalize">{link.name}</span>
                             </NavLink>
