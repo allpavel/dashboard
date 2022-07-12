@@ -19,8 +19,8 @@ const Sidebar: React.FC = () => {
 
     return (
         <div
-            className={`absolute bg-white z-10 flex flex-col w-72 h-screen pl-4 transition-all duration-300 ${
-                isOpen ? "" : "transform: -translate-x-3/4 w-18"
+            className={`absolute  bg-white z-10 flex flex-col sm:w-72 pl-4 transition-all duration-300 ${
+                isOpen ? "" : "w-72 transform: -translate-x-3/4"
             }`}
         >
             <section
@@ -48,7 +48,7 @@ const Sidebar: React.FC = () => {
                 )}
             </section>
             <section
-                className={`mt-4 flex flex-col flex-shrink flex-grow-0 scrollbar opacity-100 visible transition-all duration-400 ${
+                className={`mt-4 flex flex-col items-stretch  flex-shrink flex-grow-0 opacity-100 visible transition-all duration-400 ${
                     isOpen ? "overflow-y-auto" : "invisible opacity-0 overflow-y-auto"
                 }`}
             >
